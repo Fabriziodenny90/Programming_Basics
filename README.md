@@ -1,3 +1,3 @@
-# Programming_Basics
+Java programming (basics)
 
-(Personal work) Some Java code written to revise basic data structures and visiting/sorting algorithms.
+Some Java code written to revise basic data structures and visiting/sorting algorithms.
