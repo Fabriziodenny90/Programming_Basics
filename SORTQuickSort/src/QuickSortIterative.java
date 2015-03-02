@@ -1,5 +1,7 @@
+import java.util.Stack;
 
-public class QuickSort {
+
+public class QuickSortIterative {
 
 	public static void sort(int[] array) {
 		
@@ -10,10 +12,31 @@ public class QuickSort {
 	private static void helper(int[] array, int start, int end){
 		
 		if(start>=end) return;		
+		
+		Stack<Integer> stackL = new Stack<Integer>();
+		Stack<Integer> stackR = new Stack<Integer>();
+		stackL.push(start);
+		stackR.push(end);
+		while(true){
+			
+			if(stackR.isEmpty() && stackR.isEmpty()) break;
+			
+			int l = stackL.pop();
+			int r = stackR.pop();
+			
+			if(l>=r) continue;
+			
+			int pivot = scan(array,l,r);
 
-		int pivot = scan(array,start,end);
-		helper(array,start,pivot-1);
-		helper(array,pivot,end);
+			stackL.push(pivot);
+			stackR.push(r);
+			stackL.push(l);
+			stackR.push(pivot-1);
+
+			
+			//helper(array,start,pivot-1);
+			//helper(array,pivot+1,end);
+		}
 	}
 
 	private static int scan(int[] array, int start, int end){
@@ -30,11 +53,6 @@ public class QuickSort {
 			while(array[j]>p) j--;
 			if(i<j){
 				exchange(array,i,j);
-//				System.out.print("Exchanged --- Array now :");
-//				for(int g = 0 ; g < 9; g++){
-//					System.out.print(array[g] + " ");
-//				}
-//				System.out.println();
 			}
 			i++;
 			j--;
